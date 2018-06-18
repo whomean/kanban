@@ -1,0 +1,60 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+.col-1 {
+  width: 100%; }
+
+.col-2 {
+  width: 50%; }
+
+.col-3 {
+  width: 33.3333333333%; }
+
+.col-4 {
+  width: 25%; }
+
+.col-5 {
+  width: 20%; }
+
+.col-6 {
+  width: 16.6666666667%; }
+
+.col-7 {
+  width: 14.2857142857%; }
+
+.col-8 {
+  width: 12.5%; }
+
+.col-9 {
+  width: 11.1111111111%; }
+
+.col-10 {
+  width: 10%; }
+
+.board__body::before,
+.board__body::after {
+  clear: both;
+  content: "";
+  display: table; }
+
+body {
+  background-image: url("https://umad.com/img/2015/8/gradient-desktop-wallpaper-393-442-hd-wallpapers.jpg"); }
+
+.kanban__body {
+  display: flex; }
+
+.column {
+  min-height: 500px;
+  background: rgba(255, 255, 255, 0.5);
+  margin: 10px;
+  transition: all 1s ease; }
+  .column__delete-button {
+    top: 5px;
+    right: 5px; }
+  .column__card-list {
+    min-height: 10px; }
+  .column__card-placeholder {
+    background: red; }
+
+/*# sourceMappingURL=style.css.map */

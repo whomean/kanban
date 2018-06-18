@@ -1,0 +1,44 @@
+$column-color: #E3E3E3;
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+@for $i from 1 through 10 {
+	.col-#{$i} {
+		width: percentage(1/$i);
+	}
+}
+
+.board__body::before,
+.board__body::after {
+	clear: both;
+	content: "";
+	display: table;
+}
+body {
+	background-image: url("https://umad.com/img/2015/8/gradient-desktop-wallpaper-393-442-hd-wallpapers.jpg");
+}
+
+.kanban__body {
+	display: flex;
+}
+
+.column {
+	min-height: 500px;
+	background: rgba(255, 255, 255, .5);
+	margin: 10px;
+	transition: all 1s ease;
+	&__delete-button {
+		top: 5px;
+		right: 5px;
+	}
+	&__card-list {
+		min-height: 10px;
+	}
+	&__card-placeholder {
+		background: red;
+
+	}
+}
