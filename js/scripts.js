@@ -144,10 +144,12 @@ class Column {
     const columnCardList = document.createElement("ul");
     columnCardList.classList.add('column__card-list');
     const columnDelete = document.createElement("button");
-    columnDelete.classList.add('column__delete-button');
+    columnDelete.classList.add('column__button');
+    columnDelete.classList.add('column__button--delete-column');
     columnDelete.textContent = "X"
     const columnAddCard = document.createElement("button");
-    columnAddCard.classList.add('column__add-card-button');
+    columnAddCard.classList.add('column__button');
+    columnAddCard.classList.add('column__button--add-card');
     columnAddCard.textContent = "add card..."
 
     columnDelete.onclick = () => {
@@ -194,7 +196,8 @@ class Card {
     cardDescription.classList.add('column__card-description');
     cardDescription.innerHTML = this.description;
     const cardDelete = document.createElement("button");
-    cardDelete.classList.add('column__delete-card');
+    cardDelete.classList.add('column__button');
+    cardDelete.classList.add('column__button--delete-card');
     cardDelete.textContent = "X"
 
     cardDelete.onclick = () => {

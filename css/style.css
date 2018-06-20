@@ -1,3 +1,9 @@
+:root {
+  --main-bg-color: #bb8fce;
+  --column-color: rgba(255, 255, 255, 0.5);
+  --card-color: #f4ecf7;
+  --font-color: #4a235a; }
+
 * {
   margin: 0;
   padding: 0; }
@@ -39,22 +45,101 @@
   display: table; }
 
 body {
-  background-image: url("https://umad.com/img/2015/8/gradient-desktop-wallpaper-393-442-hd-wallpapers.jpg"); }
+  background: var(--main-bg-color); }
+
+.kanban__header {
+  padding: 10px; }
+  .kanban__header h1 {
+    color: var(--font-color);
+    margin-bottom: 15px;
+    text-align: center; }
 
 .kanban__body {
   display: flex; }
 
+.kanban__create-column {
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75); }
+  .kanban__create-column:hover {
+    -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75); }
+
 .column {
   min-height: 500px;
-  background: rgba(255, 255, 255, 0.5);
+  color: var(--font-color);
+  flex-grow: 1;
+  background: var(--column-color);
   margin: 10px;
-  transition: all 1s ease; }
-  .column__delete-button {
-    top: 5px;
-    right: 5px; }
+  transition: all 1s ease;
+  position: relative;
+  padding: 15px;
+  border-radius: 5px; }
+  .column__button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px; }
+    .column__button--delete-column {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-weight: bold;
+      color: var(--font-color);
+      -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75); }
+      .column__button--delete-column:hover {
+        -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75); }
+    .column__button--add-card {
+      margin-bottom: 15px;
+      -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75); }
+      .column__button--add-card:hover {
+        -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75); }
+    .column__button--delete-card {
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      padding: 0;
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      font-weight: bold;
+      color: var(--font-color);
+      -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75); }
+      .column__button--delete-card:hover {
+        -webkit-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
+        box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75); }
+  .column__title {
+    margin-bottom: 20px; }
   .column__card-list {
-    min-height: 10px; }
+    min-height: 20px; }
+  .column__card {
+    min-height: 30px;
+    list-style-type: none;
+    background: var(--card-color);
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px; }
   .column__card-placeholder {
-    background: red; }
+    min-height: 50px;
+    list-style-type: none;
+    border: 2px dashed var(--font-color); }
 
 /*# sourceMappingURL=style.css.map */

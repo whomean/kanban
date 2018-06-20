@@ -1,4 +1,9 @@
-$column-color: #E3E3E3;
+:root {
+    --main-bg-color: #bb8fce;
+		--column-color: rgba(255, 255, 255, .5);
+		--card-color: #f4ecf7;
+		--font-color: #4a235a;
+}
 
 * {
 	margin: 0;
@@ -18,27 +23,117 @@ $column-color: #E3E3E3;
 	display: table;
 }
 body {
-	background-image: url("https://umad.com/img/2015/8/gradient-desktop-wallpaper-393-442-hd-wallpapers.jpg");
+	background: var(--main-bg-color); ;
 }
 
-.kanban__body {
-	display: flex;
+.kanban {
+  &__header {
+    padding: 10px;
+    h1 {
+      color: var(--font-color);
+      margin-bottom: 15px;
+      text-align: center;
+    }
+  }
+	&__body {
+		display: flex;
+	}
+	&__create-column {
+		border: none;
+		padding: 10px;
+		border-radius: 5px;
+    font-weight: bold;
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    &:hover {
+      -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+    }
+	}
 }
 
 .column {
 	min-height: 500px;
-	background: rgba(255, 255, 255, .5);
+	color: var(--font-color);
+	flex-grow: 1;
+	background: var(--column-color);
 	margin: 10px;
 	transition: all 1s ease;
-	&__delete-button {
-		top: 5px;
-		right: 5px;
+	position: relative;
+	padding: 15px;
+	border-radius: 5px;
+	&__button {
+		border: none;
+		padding: 10px;
+		border-radius: 5px;
+		&--delete-column {
+			border-radius: 50%;
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			top: -10px;
+			right: -10px;
+			font-weight: bold;
+			color: var(--font-color);
+			-webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+			&:hover {
+				-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+				-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+				box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+			}
+		}
+		&--add-card {
+			margin-bottom: 15px;
+      -webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+      &:hover {
+        -webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+  			-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+  			box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+      }
+		}
+		&--delete-card {
+			border-radius: 50%;
+			width: 20px;
+			height: 20px;
+			padding: 0;
+			position: absolute;
+			top: -7px;
+			right: -7px;
+			font-weight: bold;
+			color: var(--font-color);
+			-webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+			-moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+			box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+			&:hover {
+				-webkit-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+				-moz-box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+				box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.75);
+			}
+		}
+	}
+	&__title {
+		margin-bottom: 20px;
 	}
 	&__card-list {
-		min-height: 10px;
+		min-height: 20px;
+	}
+	&__card {
+		min-height: 30px;
+		list-style-type: none;
+		background: var(--card-color);
+		position: relative;
+		padding: 10px;
+		margin-bottom: 10px;
 	}
 	&__card-placeholder {
-		background: red;
-
+		min-height: 50px;
+		list-style-type: none;
+		border: 2px dashed var(--font-color);
 	}
 }
