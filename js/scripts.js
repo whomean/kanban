@@ -33,6 +33,7 @@ function saveColInLocalStorage(...column) {
 function saveCardsInLocalStorage(card) {
   cardsArray.push(card);
   preventCycling(cardsArray, "cards");
+  console.log(cardsArray);
 }
 
 function loadFromLocalStorage() {
@@ -44,7 +45,7 @@ function loadFromLocalStorage() {
   });
   cardsArray.forEach((a) => {
     if(a) {
-      let card = new Card(a.id, a.description, a.columnId);
+      let card = new Card(a.id, a.description, a.columnId, a.color);
       let column = document.querySelector(`[id ="${a.columnId}"] > ul`);
       if(column) {
         column.appendChild(card.element);
@@ -90,6 +91,14 @@ function deleteColumn(id) {
 function updatePosition(item, target) {
   objIndex = cardsArray.findIndex((obj => obj.id == item));
   cardsArray[objIndex].columnId = target;
+  preventCycling(cardsArray, "cards");
+}
+
+function setColor(card, color) {
+  console.log(color);
+  card.style.borderColor = color;
+  objIndex = cardsArray.findIndex((obj => obj.id == card.id));
+  cardsArray[objIndex].color = color;
   preventCycling(cardsArray, "cards");
 }
 
@@ -157,7 +166,7 @@ class Column {
     };
 
     columnAddCard.onclick = () => {
-      this.addCard(new Card(randomString(), prompt("Enter the name of the card"), this.id));
+      this.addCard(new Card(randomString(), prompt("Enter the name of the card"), this.id, "transparent"));
       //this odwołuje się do kolumny
     };
 
@@ -175,18 +184,21 @@ class Column {
   }
 
   addCard(card) {
+    console.log(card);
     this.element.querySelector(".column__card-list").append(card.element);
     saveCardsInLocalStorage(card);
   }
 }
 
 class Card {
-  constructor(id = randomString(), description, columnId) {
+  constructor(id = randomString(), description, columnId, color = 'transparent') {
     this.id = id;
     this.description = description;
     this.columnId = columnId;
+    this.color = color;
     this.element = this.createCard();
     this.element.setAttribute("id", id);
+    this.element.style.borderColor = color;
   }
 
   createCard() {
@@ -198,14 +210,29 @@ class Card {
     const cardDelete = document.createElement("button");
     cardDelete.classList.add('column__button');
     cardDelete.classList.add('column__button--delete-card');
-    cardDelete.textContent = "X"
+    cardDelete.textContent = "X";
+    const colorButton = document.createElement("i");
+    colorButton.classList.add('fas');
+    colorButton.classList.add('fa-palette');
+    colorButton.classList.add('color-icon');
+    const color = document.createElement("input");
+    color.type = "color";
+    color.addEventListener('change', handleUpdate);
+    console.log(this.color);
+    color.classList.add('column__card-color');
 
     cardDelete.onclick = () => {
       this.removeCard();
     };
 
+    color.onclick = () => {
+    }
+
+    card.appendChild(colorButton);
+    card.appendChild(color);
     card.appendChild(cardDelete);
     card.appendChild(cardDescription);
+
 
     return card;
   }
@@ -231,5 +258,18 @@ document.querySelector('.kanban__create-column').onclick = function() {
   saveColInLocalStorage(column);
 }
 
+
 loadFromLocalStorage();
 init();
+
+
+const inputs = document.querySelectorAll('.column__card-color');
+console.log("inputs", inputs);
+inputs.forEach(input => input.addEventListener('change', handleUpdate));
+
+function handleUpdate(e) {
+  console.log("test");
+  const card = e.target.parentNode;
+  const color = this.value;
+  setColor(card, color);
+}
